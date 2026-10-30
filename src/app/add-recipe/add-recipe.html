@@ -1,0 +1,38 @@
+<div class="flex justify-center">
+  <form class="flex flex-col max-w-sm">
+    <mat-form-field>
+      <mat-label>Recipe name</mat-label>
+      <input matInput type="text" [formField]="addRecipeForm.name">
+    </mat-form-field>
+    @if (addRecipeForm.name().touched() && addRecipeForm.name().invalid()) {
+      <ul>
+        @for (err of addRecipeForm.name().errors(); track err.kind) {
+          <li class="text-red-600">{{err.message}}</li>
+        }
+      </ul>
+    }
+    <mat-form-field>
+      <mat-label>Recipe description</mat-label>
+      <input type="text" matInput [formField]="addRecipeForm.description">
+    </mat-form-field>
+    @if (addRecipeForm.description().touched() && addRecipeForm.name().invalid()) {
+      <ul>
+        @for (err of addRecipeForm.description().errors(); track err.kind) {
+          <li class="text-red-600">{{err.message}}</li>
+        }
+      </ul>
+    }
+    <mat-form-field>
+      <mat-label>Author email</mat-label>
+      <input type="text" matInput [formField]="addRecipeForm.authorEmail">
+    </mat-form-field>
+    @if (addRecipeForm.authorEmail().touched() && addRecipeForm.authorEmail().invalid()) {
+      <ul>
+        @for (err of addRecipeForm.authorEmail().errors(); track err.kind) {
+          <li class="text-red-600">{{err.message}}</li>
+        }
+      </ul>
+    }
+    <button type="button" (click)="onSubmit($event)" mat-raised-button>Add</button>
+  </form>
+</div>
