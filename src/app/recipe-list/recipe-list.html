@@ -1,11 +1,14 @@
 <div class="flex justify-center flex-col items-center">
 
-  <input type="text"
-         (ngModelChange)="searchTerm.set($event)"
-         [ngModel]="searchTerm()"
-         placeholder="Search recipe..."
-         class="border rounded-lg px-1.5 py-1">
-  @for (recipe of filteredRecipes(); track recipe.id) {
+  <mat-form-field>
+    <input matInput
+           [value]="searchTerm()"
+           (input)="searchTerm.set($event.target.value)"
+            type="text"
+            placeholder="Search recipe..."
+  />
+  </mat-form-field>
+  @for (recipe of searchRecipes(); track recipe.id) {
     <a class="underline text-3xl text-purple-300"
        [routerLink]="['/recipes', recipe.id]">{{ recipe.name }}</a>
 
