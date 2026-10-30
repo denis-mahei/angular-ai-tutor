@@ -25,7 +25,7 @@ export class AddRecipe {
   onSubmit(event: Event): void {
     event.preventDefault();
     const formValues = this.addRecipeForm().value();
-    const id = this.recipeService.recipes().length + 1;
+    const id = crypto.randomUUID();
     this.recipeService.addRecipe({
       id,
       ...formValues,

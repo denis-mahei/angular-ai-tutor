@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RecipeModel } from '../models';
 import { Recipe } from '../recipe';
@@ -9,9 +9,13 @@ import { RouterLink } from '@angular/router';
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.html',
 })
-export class RecipeList {
+export class RecipeList implements OnInit {
   recipeService = inject(Recipe);
   readonly searchTerm = signal<string>('');
+
+  ngOnInit() {
+    this.recipeService.fetchRecipes()
+  }
 
   protected readonly filteredRecipes = computed((): RecipeModel[] => {
     return this.recipeService

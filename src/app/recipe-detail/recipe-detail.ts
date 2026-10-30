@@ -15,7 +15,7 @@ export class RecipeDetail {
     this.route.snapshot.paramMap.get('id'),
   );
   readonly recipe = computed<RecipeModel | undefined>(() => {
-    return this.recipesService.recipes().find((recipe) => recipe.id === Number(this.recipeId()));
+    return this.recipesService.recipes().find((recipe) => recipe.id === this.recipeId());
   });
   protected readonly servings = signal<number>(1);
 
