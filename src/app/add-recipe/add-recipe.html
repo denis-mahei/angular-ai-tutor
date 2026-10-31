@@ -15,7 +15,7 @@
       <mat-label>Recipe description</mat-label>
       <input type="text" matInput [formField]="addRecipeForm.description">
     </mat-form-field>
-    @if (addRecipeForm.description().touched() && addRecipeForm.name().invalid()) {
+    @if (addRecipeForm.description().touched() && addRecipeForm.description().invalid()) {
       <ul>
         @for (err of addRecipeForm.description().errors(); track err.kind) {
           <li class="text-red-600">{{err.message}}</li>
@@ -33,6 +33,15 @@
         }
       </ul>
     }
+    <fieldset class="grid grid-cols-4 gap-1">
+      @for (ingredients of addRecipeForm.ingredients; track $index) {
+        <input type="text" [formField]="ingredients.name">
+        <input [formField]="ingredients.quantity" type="number">
+        <input [formField]="ingredients.unit" type="text">
+        <button type="button" (click)="removeIngredient($index)">remove</button>
+      }
+        <button (click)="addIngredient({name: '',quantity: 0, unit: ''})" type="button">add</button>
+    </fieldset>
     <button type="button" (click)="onSubmit($event)" mat-raised-button>Add</button>
   </form>
 </div>

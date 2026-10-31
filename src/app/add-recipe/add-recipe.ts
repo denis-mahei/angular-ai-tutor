@@ -2,7 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { Recipe } from '../recipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { email, form, FormField, maxLength, min, minLength, required } from '@angular/forms/signals';
+import { email, form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
+import { Ingredient } from '../models';
 
 @Component({
   imports: [MatButtonModule, MatInputModule, FormField],
@@ -10,17 +11,37 @@ import { email, form, FormField, maxLength, min, minLength, required } from '@an
   templateUrl: './add-recipe.html',
 })
 export class AddRecipe {
-  protected readonly model = signal({ name: '', description: '', authorEmail: '' });
+  protected readonly model = signal({
+    name: '',
+    description: '',
+    authorEmail: '',
+    ingredients: [] as Ingredient[],
+  });
   protected readonly addRecipeForm = form(this.model, (schemaPath) => {
-    required(schemaPath.name,{ message: 'Please enter a name.' });
-    minLength(schemaPath.name, 3,{message: 'Name must be at least 3 letters.'});
+    required(schemaPath.name, { message: 'Please enter a name.' });
+    minLength(schemaPath.name, 3, { message: 'Name must be at least 3 letters.' });
     required(schemaPath.description, { message: 'Please enter a description.' });
-    maxLength(schemaPath.description, 30, {message: 'Maximum length must be' +
-        ' maximum 50 characters.'});
+    maxLength(schemaPath.description, 30, {
+      message: 'Maximum length must be' + ' maximum 50 characters.',
+    });
     required(schemaPath.authorEmail, { message: 'Please enter an email.' });
     email(schemaPath.authorEmail, { message: 'Please enter a valid email.' });
   });
   readonly recipeService = inject(Recipe);
+
+  addIngredient(ingredient: Ingredient) {
+    this.model.update(current => ({
+      ...current,
+      ingredients: [...current.ingredients, ingredient],
+    }))
+  }
+
+  removeIngredient(idx: number) {
+    this.model.update((current) => ({
+      ...current,
+      ingredients: current.ingredients.filter((_,i) => i !== idx)
+    }))
+  }
 
   onSubmit(event: Event): void {
     event.preventDefault();
@@ -34,6 +55,6 @@ export class AddRecipe {
       ingredients: [],
     });
     this.addRecipeForm().reset();
-    this.model.set({ name: '', description: '', authorEmail: '' });
+    // this.model.set({ name: '', description: '', authorEmail: '' });
   }
 }
