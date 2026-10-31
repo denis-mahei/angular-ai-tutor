@@ -8,11 +8,31 @@
       "imgUrl": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=500",
       "isFavorite": true,
       "ingredients": [
-        { "name": "Spaghetti", "quantity": 200, "unit": "g" },
-        { "name": "Guanciale", "quantity": 100, "unit": "g" },
-        { "name": "Egg Yolks", "quantity": 4, "unit": "each" },
-        { "name": "Pecorino Romano Cheese", "quantity": 50, "unit": "g" },
-        { "name": "Black Pepper", "quantity": 1, "unit": "tsp" }
+        {
+          "name": "Spaghetti",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "name": "Guanciale",
+          "quantity": 100,
+          "unit": "g"
+        },
+        {
+          "name": "Egg Yolks",
+          "quantity": 4,
+          "unit": "each"
+        },
+        {
+          "name": "Pecorino Romano Cheese",
+          "quantity": 50,
+          "unit": "g"
+        },
+        {
+          "name": "Black Pepper",
+          "quantity": 1,
+          "unit": "tsp"
+        }
       ]
     },
     {
@@ -23,11 +43,100 @@
       "imgUrl": "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=500",
       "isFavorite": false,
       "ingredients": [
-        { "name": "Tomatoes", "quantity": 4, "unit": "each" },
-        { "name": "Fresh Mozzarella", "quantity": 200, "unit": "g" },
-        { "name": "Fresh Basil", "quantity": 1, "unit": "bunch" },
-        { "name": "Extra Virgin Olive Oil", "quantity": 2, "unit": "tbsp" }
+        {
+          "name": "Tomatoes",
+          "quantity": 4,
+          "unit": "each"
+        },
+        {
+          "name": "Fresh Mozzarella",
+          "quantity": 200,
+          "unit": "g"
+        },
+        {
+          "name": "Fresh Basil",
+          "quantity": 1,
+          "unit": "bunch"
+        },
+        {
+          "name": "Extra Virgin Olive Oil",
+          "quantity": 2,
+          "unit": "tbsp"
+        }
       ]
+    },
+    {
+      "id": "aRvW1zVZyyw",
+      "name": "cdscds",
+      "description": "cdscd",
+      "authorEmail": "cdsc@mail.com",
+      "imgUrl": "image",
+      "isFavorite": true,
+      "ingredients": []
+    },
+    {
+      "id": "72w7b0YRuQY",
+      "name": "Guacomolli",
+      "description": "sauce",
+      "authorEmail": "cdsc@mail.com",
+      "imgUrl": "image",
+      "isFavorite": true,
+      "ingredients": []
+    },
+    {
+      "id": "eJBuU8J8rNo",
+      "name": "guacomolli",
+      "description": "sauce",
+      "authorEmail": "cdsc@mail.com",
+      "imgUrl": "image",
+      "isFavorite": true,
+      "ingredients": []
+    },
+    {
+      "id": "DsdDRFqjdbI",
+      "name": "Wyman and Sons",
+      "description": "177",
+      "authorEmail": "your.email+fakedata91716@gmail.com",
+      "imgUrl": "image",
+      "isFavorite": true,
+      "ingredients": []
+    },
+    {
+      "id": "k4bjKSfjaTA",
+      "name": "Wiegand - Bechtelar",
+      "description": "486",
+      "authorEmail": "your.email+fakedata40965@gmail.com",
+      "imgUrl": "image",
+      "isFavorite": true,
+      "ingredients": []
+    },
+    {
+      "id": "Qzpu5mpAQyc",
+      "name": "Stark LLC",
+      "description": "400",
+      "authorEmail": "your.email+fakedata39161@gmail.com",
+      "imgUrl": "image",
+      "isFavorite": true,
+      "ingredients": []
+    },
+    {
+      "id": "vkYZzEjovRE",
+      "name": "Porchini",
+      "description": "pizza with mashrooms",
+      "authorEmail": "cdsc@mail.com",
+      "imgUrl": "image",
+      "isFavorite": true,
+      "ingredients": []
+    },
+    {
+      "id": "1G8srmvoBWI",
+      "name": "",
+      "description": "",
+      "authorEmail": "",
+      "ingredients": [],
+      "imgUrl": "image",
+      "isFavorite": true
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
