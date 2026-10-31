@@ -1,5 +1,5 @@
 <div class="flex justify-center">
-  <form class="flex flex-col max-w-sm">
+  <form class="flex flex-col w-96">
     <mat-form-field>
       <mat-label>Recipe name</mat-label>
       <input matInput type="text" [formField]="addRecipeForm.name">
@@ -7,18 +7,18 @@
     @if (addRecipeForm.name().touched() && addRecipeForm.name().invalid()) {
       <ul>
         @for (err of addRecipeForm.name().errors(); track err.kind) {
-          <li class="text-red-600">{{err.message}}</li>
+          <li class="text-red-600">{{ err.message }}</li>
         }
       </ul>
     }
     <mat-form-field>
       <mat-label>Recipe description</mat-label>
-      <input type="text" matInput [formField]="addRecipeForm.description">
+      <textarea type="text" matInput [formField]="addRecipeForm.description"></textarea>
     </mat-form-field>
     @if (addRecipeForm.description().touched() && addRecipeForm.description().invalid()) {
       <ul>
         @for (err of addRecipeForm.description().errors(); track err.kind) {
-          <li class="text-red-600">{{err.message}}</li>
+          <li class="text-red-600">{{ err.message }}</li>
         }
       </ul>
     }
@@ -29,19 +29,45 @@
     @if (addRecipeForm.authorEmail().touched() && addRecipeForm.authorEmail().invalid()) {
       <ul>
         @for (err of addRecipeForm.authorEmail().errors(); track err.kind) {
-          <li class="text-red-600">{{err.message}}</li>
+          <li class="text-red-600">{{ err.message }}</li>
         }
       </ul>
     }
-    <fieldset class="grid grid-cols-4 gap-1">
+    <mat-form-field>
+      <mat-label>Image</mat-label>
+      <input type="text" matInput [formField]="addRecipeForm.imgUrl">
+    </mat-form-field>
+    <fieldset class="flex flex-col items-end mb-2">
       @for (ingredients of addRecipeForm.ingredients; track $index) {
-        <input type="text" [formField]="ingredients.name">
-        <input [formField]="ingredients.quantity" type="number">
-        <input [formField]="ingredients.unit" type="text">
-        <button type="button" (click)="removeIngredient($index)">remove</button>
+
+        <section class="flex flex-col mb-2">
+          <div class="grid grid-cols-3 gap-1">
+            <mat-form-field>
+              <mat-label>name</mat-label>
+              <input matInput type="text" [formField]="ingredients.name">
+            </mat-form-field>
+            <mat-form-field floatLabel="always">
+              <mat-label>quantity</mat-label>
+              <input matInput [formField]="ingredients.quantity" step="any" type="number" placeholder="0">
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>unit</mat-label>
+              <mat-select [formField]="ingredients.unit">
+                @for (u of UNITS; track $index){
+                  <mat-option [value]="u">{{u}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <button type="button" matButton="filled" (click)="removeIngredient($index)">
+            <mat-icon aria-hidden="false">delete</mat-icon>
+          </button>
+        </section>
       }
-        <button (click)="addIngredient({name: '',quantity: 0, unit: ''})" type="button">add</button>
+      <button matButton="filled" (click)="addIngredient({name: '',quantity: 0, unit: 'g'})" type="button">
+        <mat-icon fontIcon="playlist_add"></mat-icon>
+      </button>
     </fieldset>
-    <button type="button" (click)="onSubmit($event)" mat-raised-button>Add</button>
+    <button type="button" (click)="onSubmit($event)" mat-raised-button>Add recipe</button>
   </form>
 </div>

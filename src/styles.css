@@ -9,5 +9,8 @@ body {
 }
 
 input {
-    @apply text-shadow-zinc-700 border rounded-lg bg-purple-200 px-2 py-1 placeholder:text-zinc-700
+    @apply text-shadow-zinc-700 border
+    rounded-lg bg-purple-200 px-2 py-1
+    placeholder:text-zinc-700
+    [&::-webkit-inner-spin-button]:hidden
 }

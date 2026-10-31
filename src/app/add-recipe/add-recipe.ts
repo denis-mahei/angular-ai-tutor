@@ -2,11 +2,23 @@ import { Component, inject, signal } from '@angular/core';
 import { Recipe } from '../recipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { email, form, FormField, maxLength, minLength, required } from '@angular/forms/signals';
-import { Ingredient } from '../models';
+import { MatIconModule } from '@angular/material/icon';
+
+import {
+  applyEach,
+  email,
+  form,
+  FormField,
+  maxLength,
+  min,
+  minLength,
+  required,
+} from '@angular/forms/signals';
+import { Ingredient, UNITS } from '../models';
+import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
-  imports: [MatButtonModule, MatInputModule, FormField],
+  imports: [MatButtonModule, MatInputModule, FormField, MatIconModule, MatSelect, MatOption],
   selector: 'app-add-recipe',
   templateUrl: './add-recipe.html',
 })
@@ -15,6 +27,7 @@ export class AddRecipe {
     name: '',
     description: '',
     authorEmail: '',
+    imgUrl: '',
     ingredients: [] as Ingredient[],
   });
   protected readonly addRecipeForm = form(this.model, (schemaPath) => {
@@ -26,21 +39,24 @@ export class AddRecipe {
     });
     required(schemaPath.authorEmail, { message: 'Please enter an email.' });
     email(schemaPath.authorEmail, { message: 'Please enter a valid email.' });
+    applyEach(schemaPath.ingredients, (items) => {
+      min(items.quantity, 0, { message: 'Quantity must be minimum 1' });
+    });
   });
   readonly recipeService = inject(Recipe);
 
   addIngredient(ingredient: Ingredient) {
-    this.model.update(current => ({
+    this.model.update((current) => ({
       ...current,
       ingredients: [...current.ingredients, ingredient],
-    }))
+    }));
   }
 
   removeIngredient(idx: number) {
     this.model.update((current) => ({
       ...current,
-      ingredients: current.ingredients.filter((_,i) => i !== idx)
-    }))
+      ingredients: current.ingredients.filter((_, i) => i !== idx),
+    }));
   }
 
   onSubmit(event: Event): void {
@@ -57,4 +73,6 @@ export class AddRecipe {
     this.addRecipeForm().reset();
     // this.model.set({ name: '', description: '', authorEmail: '' });
   }
+
+  protected readonly UNITS = UNITS;
 }

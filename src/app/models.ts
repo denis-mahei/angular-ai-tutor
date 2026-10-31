@@ -1,7 +1,14 @@
+export const UNITS = [
+  'g',
+  'each',
+  'tsp',
+  'ml'
+] as const;
+export type Unit = typeof UNITS[number];
 export interface Ingredient {
   name: string;
   quantity: number;
-  unit: string;
+  unit: Unit
 }
 
 export interface RecipeModel {

@@ -136,6 +136,24 @@
       "ingredients": [],
       "imgUrl": "image",
       "isFavorite": true
+    },
+    {
+      "id": "hwAfUKMQuMA",
+      "name": "",
+      "description": "",
+      "authorEmail": "",
+      "ingredients": [],
+      "imgUrl": "image",
+      "isFavorite": true
+    },
+    {
+      "id": "9UgvNQGWmAs",
+      "name": "",
+      "description": "",
+      "authorEmail": "",
+      "ingredients": [],
+      "imgUrl": "image",
+      "isFavorite": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
