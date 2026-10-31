@@ -1,34 +1,29 @@
 import { inject, Service, signal } from '@angular/core';
 import { RecipeModel } from './models';
-import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, of } from 'rxjs';
+import { HttpClient, httpResource } from '@angular/common/http';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
+import { debounceTime } from 'rxjs';
 
 @Service()
 export class Recipe {
-  private readonly http = inject(HttpClient);
-  readonly recipes = signal<RecipeModel[]>([]);
   url = 'http://localhost:3001';
+  private readonly http = inject(HttpClient);
+  readonly searchTerm = signal<string>('');
+  protected readonly debouncedTerm = toSignal(
+    toObservable(this.searchTerm).pipe(debounceTime(500)),
+    {initialValue: ''}
+  );
+  readonly recipeResource = httpResource<RecipeModel[]>(() => {
+    const term = this.debouncedTerm();
+    return term ? `${this.url}/recipes?name_contains=${term}` : `${this.url}/recipes`;
+  });
 
-  fetchRecipes(): void {
-    this.http
-      .get<RecipeModel[]>(`${this.url}/recipes`)
-      .pipe(
-        map((recipes) => [...recipes].sort((a, b) => a.name.localeCompare(b.name))),
-        catchError((error): Observable<[] | never> => {
-          console.log('Failed to load recipes:', error.message);
-          return of([]);
-        }),
-      )
-      .subscribe({
-        next: (data) => this.recipes.set(data),
-      });
-  }
+  recipeValue = this.recipeResource.value;
+  isLoading = this.recipeResource.isLoading;
 
-  searchRecipes(term: string) {
-    return this.http.get<RecipeModel[]>(`${this.url}/recipes?name_contains=${term}`);
-  }
-
-  addRecipe(newRecipe: RecipeModel) {
-    this.recipes.update((list) => [...list, newRecipe]);
+  addRecipe(recipe: RecipeModel) {
+    return this.http.post<RecipeModel>(`${this.url}/recipes`, recipe).subscribe({
+      next: () => this.recipeResource.reload(),
+    });
   }
 }
