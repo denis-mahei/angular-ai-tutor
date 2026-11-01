@@ -1,23 +1,4 @@
 {
-  "recipes": [
-    {
-      "id": "Num59j9fDE0",
-      "name": "Wintheiser, Streich and Rolfson",
-      "description": "Decretum adsidue alienus tutam",
-      "authorEmail": "your.email+fakedata32590@gmail.com",
-      "imgUrl": "132",
-      "ingredients": [],
-      "isFavorite": true
-    },
-    {
-      "id": "ZTPSKOX16XI",
-      "name": "Prohaska Inc",
-      "description": "Beatae coniuratio nulla. Crust",
-      "authorEmail": "your.email+fakedata59891@gmail.com",
-      "imgUrl": "226",
-      "ingredients": [],
-      "isFavorite": true
-    }
-  ],
+  "recipes": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

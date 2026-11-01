@@ -2,15 +2,16 @@ import { Routes } from '@angular/router';
 import { RecipeList } from './recipe-list/recipe-list';
 import { RecipeDetail } from './recipe-detail/recipe-detail';
 import { NotFound } from './not-found/not-found';
+import { AddRecipe } from './add-recipe/add-recipe';
 
 export const routes: Routes = [
   {
     path: 'recipes',
-    component: RecipeList
+    component: RecipeList,
   },
   {
-    path: 'recipes/:id',
-    component: RecipeDetail
+    path: 'recipes/new',
+    component: AddRecipe,
   },
   {
     path: '',
@@ -18,7 +19,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'recipes/:id',
+    component: RecipeDetail,
+  },
+  {
     path: '**',
-    component: NotFound
-  }
+    component: NotFound,
+  },
 ];
