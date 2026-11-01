@@ -11,12 +11,25 @@
   @if (recipeService.isLoading()) {
     <mat-spinner></mat-spinner>
   }
-  @for (recipe of recipeService.recipeValue(); track recipe.id) {
-    <a class="underline text-3xl text-purple-300"
-       [routerLink]="['/recipes', recipe.id]">{{ recipe.name }}</a>
-    <button type="button" matButton (click)="recipeService.removeRecipe(recipe.id)">
-      <mat-icon>delete</mat-icon>
-    </button>
-  }
+  <div class="grid grid-cols-3 gap-1">
+    @for (recipe of recipeService.recipeValue(); track recipe.id) {
+        <mat-card>
+          <a class="underline text-3xl text-purple-300"
+             [routerLink]="['/recipes', recipe.id]">
+            <mat-card-header>
+              {{ recipe.name }}
+            </mat-card-header>
+          </a>
+          <mat-card-content>
+            <img [src]="recipe.imgUrl" mat-card-image [alt]="recipe.name" width="100" height="100">
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button type="button" matButton (click)="openDialog(recipe.id)">
+              Remove
+            </button>
+          </mat-card-actions>
+        </mat-card>
+
+  }</div>
 </div>
 

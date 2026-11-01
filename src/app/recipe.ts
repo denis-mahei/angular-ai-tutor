@@ -2,7 +2,7 @@ import { inject, Service, signal } from '@angular/core';
 import { RecipeModel } from './models';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime, map } from 'rxjs';
+import { debounceTime } from 'rxjs';
 
 @Service()
 export class Recipe {
@@ -28,10 +28,8 @@ export class Recipe {
   }
 
   removeRecipe(id: string) {
-    return this.http.delete(`${this.url}/recipes/${id}`)
-      .subscribe({
-        next: () => this.recipeResource.reload(),
-      })
+    return this.http.delete(`${this.url}/recipes/${id}`).subscribe({
+      next: () => this.recipeResource.reload(),
+    });
   }
-
 }
