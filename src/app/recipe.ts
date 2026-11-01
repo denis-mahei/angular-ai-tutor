@@ -2,7 +2,7 @@ import { inject, Service, signal } from '@angular/core';
 import { RecipeModel } from './models';
 import { HttpClient, httpResource } from '@angular/common/http';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
-import { debounceTime } from 'rxjs';
+import { debounceTime, map } from 'rxjs';
 
 @Service()
 export class Recipe {
@@ -11,7 +11,7 @@ export class Recipe {
   readonly searchTerm = signal<string>('');
   protected readonly debouncedTerm = toSignal(
     toObservable(this.searchTerm).pipe(debounceTime(500)),
-    {initialValue: ''}
+    { initialValue: '' },
   );
   readonly recipeResource = httpResource<RecipeModel[]>(() => {
     const term = this.debouncedTerm();
@@ -26,4 +26,12 @@ export class Recipe {
       next: () => this.recipeResource.reload(),
     });
   }
+
+  removeRecipe(id: string) {
+    return this.http.delete(`${this.url}/recipes/${id}`)
+      .subscribe({
+        next: () => this.recipeResource.reload(),
+      })
+  }
+
 }

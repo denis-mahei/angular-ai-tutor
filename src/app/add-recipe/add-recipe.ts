@@ -14,7 +14,7 @@ import {
   minLength,
   required,
 } from '@angular/forms/signals';
-import { Ingredient, UNITS } from '../models';
+import { Ingredient, RecipeModel, UNITS } from '../models';
 import { MatOption, MatSelect } from '@angular/material/select';
 
 @Component({
@@ -23,13 +23,14 @@ import { MatOption, MatSelect } from '@angular/material/select';
   templateUrl: './add-recipe.html',
 })
 export class AddRecipe {
-  protected readonly model = signal({
+  protected readonly initialFields = {
     name: '',
     description: '',
     authorEmail: '',
     imgUrl: '',
     ingredients: [] as Ingredient[],
-  });
+  };
+  protected readonly model = signal(this.initialFields);
   protected readonly UNITS = UNITS;
   protected readonly addRecipeForm = form(this.model, (schemaPath) => {
     required(schemaPath.name, { message: 'Please enter a name.' });
@@ -63,16 +64,13 @@ export class AddRecipe {
 
   onSubmit(event: Event): void {
     event.preventDefault();
-    const formValues = this.addRecipeForm().value();
     const id = crypto.randomUUID();
-    if (this.addRecipeForm().valid()){
-      this.recipeService.addRecipe({
-        id,
-        ...formValues,
-        isFavorite: true,
-      });
-    }
-
-    // this.model.set({ name: '', description: '', authorEmail: '' });
+    const formValues = this.addRecipeForm().value();
+    this.recipeService.addRecipe({
+      id,
+      ...formValues,
+      isFavorite: true,
+    });
+    this.addRecipeForm().reset(this.initialFields);
   }
 }

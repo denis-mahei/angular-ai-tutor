@@ -4,10 +4,12 @@ import { Recipe } from '../recipe';
 import { RouterLink } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButton } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
-  imports: [FormsModule, RouterLink, MatInputModule, MatProgressSpinnerModule],
+  imports: [FormsModule, MatIconModule,RouterLink, MatInputModule, MatProgressSpinnerModule, MatButton],
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.html',
 })
