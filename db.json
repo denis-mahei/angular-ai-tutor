@@ -66,93 +66,18 @@
       ]
     },
     {
-      "id": "aRvW1zVZyyw",
-      "name": "cdscds",
-      "description": "cdscd",
-      "authorEmail": "cdsc@mail.com",
-      "imgUrl": "image",
-      "isFavorite": true,
-      "ingredients": []
-    },
-    {
-      "id": "72w7b0YRuQY",
-      "name": "Guacomolli",
-      "description": "sauce",
-      "authorEmail": "cdsc@mail.com",
-      "imgUrl": "image",
-      "isFavorite": true,
-      "ingredients": []
-    },
-    {
-      "id": "eJBuU8J8rNo",
-      "name": "guacomolli",
-      "description": "sauce",
-      "authorEmail": "cdsc@mail.com",
-      "imgUrl": "image",
-      "isFavorite": true,
-      "ingredients": []
-    },
-    {
-      "id": "DsdDRFqjdbI",
-      "name": "Wyman and Sons",
-      "description": "177",
-      "authorEmail": "your.email+fakedata91716@gmail.com",
-      "imgUrl": "image",
-      "isFavorite": true,
-      "ingredients": []
-    },
-    {
-      "id": "k4bjKSfjaTA",
-      "name": "Wiegand - Bechtelar",
-      "description": "486",
-      "authorEmail": "your.email+fakedata40965@gmail.com",
-      "imgUrl": "image",
-      "isFavorite": true,
-      "ingredients": []
-    },
-    {
-      "id": "Qzpu5mpAQyc",
-      "name": "Stark LLC",
-      "description": "400",
-      "authorEmail": "your.email+fakedata39161@gmail.com",
-      "imgUrl": "image",
-      "isFavorite": true,
-      "ingredients": []
-    },
-    {
-      "id": "vkYZzEjovRE",
-      "name": "Porchini",
-      "description": "pizza with mashrooms",
-      "authorEmail": "cdsc@mail.com",
-      "imgUrl": "image",
-      "isFavorite": true,
-      "ingredients": []
-    },
-    {
-      "id": "1G8srmvoBWI",
-      "name": "",
-      "description": "",
-      "authorEmail": "",
-      "ingredients": [],
-      "imgUrl": "image",
-      "isFavorite": true
-    },
-    {
-      "id": "hwAfUKMQuMA",
-      "name": "",
-      "description": "",
-      "authorEmail": "",
-      "ingredients": [],
-      "imgUrl": "image",
-      "isFavorite": true
-    },
-    {
-      "id": "9UgvNQGWmAs",
-      "name": "",
-      "description": "",
-      "authorEmail": "",
-      "ingredients": [],
-      "imgUrl": "image",
+      "id": "khlmIS1RdT0",
+      "name": "Stiedemann, Prosacco and Rau",
+      "description": "Tener damnatio modi laborum co",
+      "authorEmail": "your.email+fakedata83052@gmail.com",
+      "imgUrl": "https://plus.unsplash.com/premium_photo-1677000666741-17c3c57139a2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+      "ingredients": [
+        {
+          "name": "salt",
+          "quantity": 0.2,
+          "unit": "g"
+        }
+      ],
       "isFavorite": true
     }
   ],

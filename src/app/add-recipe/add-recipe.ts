@@ -66,9 +66,7 @@ export class AddRecipe {
     this.recipeService.addRecipe({
       id,
       ...formValues,
-      imgUrl: 'image',
       isFavorite: true,
-      ingredients: [],
     });
     this.addRecipeForm().reset();
     // this.model.set({ name: '', description: '', authorEmail: '' });
