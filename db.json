@@ -79,6 +79,76 @@
         }
       ],
       "isFavorite": true
+    },
+    {
+      "id": "GyPdQ72O3DA",
+      "name": "Stiedemann, Prosacco and Rau",
+      "description": "Tener damnatio modi laborum co",
+      "authorEmail": "your.email+fakedata83052@gmail.com",
+      "imgUrl": "https://plus.unsplash.com/premium_photo-1677000666741-17c3c57139a2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D",
+      "ingredients": [
+        {
+          "name": "salt",
+          "quantity": 0.2,
+          "unit": "g"
+        },
+        {
+          "name": "pepper",
+          "quantity": 1,
+          "unit": "tsp"
+        },
+        {
+          "name": "water",
+          "quantity": 100,
+          "unit": "ml"
+        }
+      ],
+      "isFavorite": true
+    },
+    {
+      "id": "XBkjGkYLvqY",
+      "name": "",
+      "description": "",
+      "authorEmail": "",
+      "imgUrl": "",
+      "ingredients": [],
+      "isFavorite": true
+    },
+    {
+      "id": "7TUnDOcPHKo",
+      "name": "",
+      "description": "",
+      "authorEmail": "",
+      "imgUrl": "",
+      "ingredients": [],
+      "isFavorite": true
+    },
+    {
+      "id": "eOJbrRAiFrA",
+      "name": "",
+      "description": "",
+      "authorEmail": "",
+      "imgUrl": "",
+      "ingredients": [],
+      "isFavorite": true
+    },
+    {
+      "id": "jP6xzT66wVo",
+      "name": "vd",
+      "description": "vd",
+      "authorEmail": "",
+      "imgUrl": "",
+      "ingredients": [],
+      "isFavorite": true
+    },
+    {
+      "id": "vc9OaMZ0Ncc",
+      "name": "vfd",
+      "description": "vfdvfd",
+      "authorEmail": "cdsc@mail.com",
+      "imgUrl": "cdscds",
+      "ingredients": [],
+      "isFavorite": true
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

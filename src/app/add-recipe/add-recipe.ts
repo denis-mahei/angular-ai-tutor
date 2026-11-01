@@ -30,6 +30,7 @@ export class AddRecipe {
     imgUrl: '',
     ingredients: [] as Ingredient[],
   });
+  protected readonly UNITS = UNITS;
   protected readonly addRecipeForm = form(this.model, (schemaPath) => {
     required(schemaPath.name, { message: 'Please enter a name.' });
     minLength(schemaPath.name, 3, { message: 'Name must be at least 3 letters.' });
@@ -40,9 +41,10 @@ export class AddRecipe {
     required(schemaPath.authorEmail, { message: 'Please enter an email.' });
     email(schemaPath.authorEmail, { message: 'Please enter a valid email.' });
     applyEach(schemaPath.ingredients, (items) => {
-      min(items.quantity, 0, { message: 'Quantity must be minimum 1' });
+      min(items.quantity, 0.1, { message: 'Quantity must be minimum 0.1' });
     });
   });
+
   readonly recipeService = inject(Recipe);
 
   addIngredient(ingredient: Ingredient) {
@@ -63,14 +65,14 @@ export class AddRecipe {
     event.preventDefault();
     const formValues = this.addRecipeForm().value();
     const id = crypto.randomUUID();
-    this.recipeService.addRecipe({
-      id,
-      ...formValues,
-      isFavorite: true,
-    });
-    this.addRecipeForm().reset();
+    if (this.addRecipeForm().valid()){
+      this.recipeService.addRecipe({
+        id,
+        ...formValues,
+        isFavorite: true,
+      });
+    }
+
     // this.model.set({ name: '', description: '', authorEmail: '' });
   }
-
-  protected readonly UNITS = UNITS;
 }

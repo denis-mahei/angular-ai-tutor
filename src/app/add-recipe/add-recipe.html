@@ -68,6 +68,6 @@
         <mat-icon fontIcon="playlist_add"></mat-icon>
       </button>
     </fieldset>
-    <button type="button" (click)="onSubmit($event)" mat-raised-button>Add recipe</button>
+    <button type="button" (click)="onSubmit($event)" [disabled]="addRecipeForm().invalid()" mat-raised-button>Add recipe</button>
   </form>
 </div>
