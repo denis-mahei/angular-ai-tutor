@@ -20,3 +20,7 @@ export interface RecipeModel {
   isFavorite: boolean;
   ingredients: Ingredient[];
 }
+
+export interface DialogData {
+  name: string;
+}

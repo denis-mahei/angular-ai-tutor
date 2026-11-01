@@ -13,8 +13,9 @@ import {
   MatCardHeader,
   MatCardImage
 } from '@angular/material/card';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmDialog } from '../confirm-dialog/confirm-dialog';
+import { DialogData } from '../models';
 
 @Component({
   imports: [
@@ -37,8 +38,10 @@ export class RecipeList {
   readonly recipeService = inject(Recipe);
   readonly dialog = inject(MatDialog);
 
-  openDialog(id: string) {
-    const dialogRef = this.dialog.open(ConfirmDialog)
+  openDialog(id: string, name: string) {
+    const dialogRef = this.dialog.open<ConfirmDialog, DialogData>(ConfirmDialog, {
+      data: { name },
+    });
     dialogRef.afterClosed().subscribe(agree => {
       if (agree) {
         this.recipeService.removeRecipe(id)

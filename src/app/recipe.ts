@@ -15,14 +15,17 @@ export class Recipe {
   );
   readonly recipeResource = httpResource<RecipeModel[]>(() => {
     const term = this.debouncedTerm();
-    return term ? `${this.url}/recipes?name_contains=${term}` : `${this.url}/recipes`;
+    return term
+      ? `${this.url}/recipes?name_contains=${term}`
+      : `${this.url}/recipes`;
   });
 
   recipeValue = this.recipeResource.value;
   isLoading = this.recipeResource.isLoading;
 
   addRecipe(recipe: RecipeModel) {
-    return this.http.post<RecipeModel>(`${this.url}/recipes`, recipe).subscribe({
+    return this.http.post<RecipeModel>(`${this.url}/recipes`, recipe)
+      .subscribe({
       next: () => this.recipeResource.reload(),
     });
   }
