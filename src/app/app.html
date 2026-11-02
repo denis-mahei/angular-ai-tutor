@@ -1,4 +1,11 @@
 <main>
   <h1 class="text-center text-4xl p-2">{{ title() }}</h1>
+  @if (authService.isLoggedIn()) {
+    <a routerLink="/recipes/new">Add recipe</a>
+    <button (click)="authService.logout()">Logout</button>
+  } @else {
+    <button (click)="authService.login()">Login</button>
+  }
+
   <router-outlet></router-outlet>
 </main>
